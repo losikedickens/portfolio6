@@ -2,6 +2,38 @@
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle.querySelector('i');
+
+// Name alternating effect
+document.addEventListener('DOMContentLoaded', function() {
+    const nameElement = document.querySelector('#hero h1 span');
+    const originalText = nameElement.textContent;
+    
+    // Check if we're dealing with "Losike Ochieng" format
+    if (originalText.includes('Losike')) {
+        let isShowingLosike = true;
+        
+        function toggleLastName() {
+            if (isShowingLosike) {
+                nameElement.textContent = originalText.replace('Losike', 'Ochieng');
+            } else {
+                nameElement.textContent = originalText.replace('Ochieng', 'Losike');
+            }
+            isShowingLosike = !isShowingLosike;
+        }
+        
+        // Start alternating every 2 seconds
+        setInterval(toggleLastName, 2000);
+    }
+});
+    
+    // Simple Project Image Click to View
+    const projectImages = document.querySelectorAll('.project-image img');
+    projectImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+            window.open(this.src, '_blank');
+        });
+    });
     
     // Initialize theme
     function initTheme() {
